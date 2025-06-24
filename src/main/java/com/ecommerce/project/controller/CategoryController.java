@@ -32,7 +32,9 @@ public class CategoryController {
     }
 
     @PostMapping("/public/categories")
-    public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryDTO> createCategory(
+            @Valid @RequestBody CategoryDTO categoryDTO
+    ) {
         CategoryDTO savedCategoryDTO = categoryService.createCategory(categoryDTO);
         return new ResponseEntity<>(savedCategoryDTO, HttpStatus.CREATED);
     }
@@ -44,7 +46,10 @@ public class CategoryController {
     }
 
     @PutMapping("/public/categories/{categoryId}")
-    public ResponseEntity<CategoryDTO> updateCategory(@Valid @RequestBody CategoryDTO categoryDTO, @PathVariable Long categoryId) {
+    public ResponseEntity<CategoryDTO> updateCategory(
+            @Valid @RequestBody CategoryDTO categoryDTO,
+            @PathVariable Long categoryId
+    ) {
         CategoryDTO updatedCategoryDTO = categoryService.updateCategory(categoryDTO, categoryId);
         return new ResponseEntity<>(updatedCategoryDTO, HttpStatus.OK);
     }
